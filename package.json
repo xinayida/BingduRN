@@ -1,0 +1,14 @@
+{
+  "name": "TestRN",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "react-native": "^0.21.0",
+    "react-native-scrollable-tab-view": "^0.3.4",
+    "react-native-viewpager": "^0.1.6",
+    "react-timer-mixin": "^0.13.3"
+  }
+}
