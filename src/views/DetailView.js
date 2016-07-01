@@ -53,7 +53,7 @@ var DEFAULT_URL = 'https://www.baidu.com';
 var WebViewExample = React.createClass({
 
     getInitialState: function () {
-        console.log("detail url: " + this.props.news.detailUrl);
+        // console.log("detail url: " + this.props.news.detailUrl);
         return {
            // url: this.props.news.detailUrl,//DEFAULT_URL,
             isLoading: true,
@@ -88,7 +88,7 @@ var WebViewExample = React.createClass({
     },
 
     renderWebView(){
-        console.log("renderWebView");
+        // console.log("renderWebView");
         return(
         <View style={[styles.outSideContainer]}>
             <ToolbarAndroid
@@ -111,7 +111,7 @@ var WebViewExample = React.createClass({
     },
 
     renderLoadingView(){
-        console.log("renderLoadingView");
+        // console.log("renderLoadingView");
         return (
          <View style={{ flex: 99, flexDirection: 'column', backgroundColor: 'white'}}>
             <View style={styles.loadingContainer}>
@@ -123,7 +123,7 @@ var WebViewExample = React.createClass({
     },
 
     onLoadEnd(){
-        console.log("onLoadEnd");
+        // console.log("onLoadEnd");
         this.setState({
             isLoading: false
         })

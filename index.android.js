@@ -22,8 +22,9 @@ var ScrollableTabView = require('react-native-scrollable-tab-view');
 //var DetailScreen = require('./DetailScreen');
 var DetailView = require('./DetailView');
 //var HomeScreen = require('./HomeScreen')
-var NewsPage = require('./NewsPage')
-var DrawerTest =  require('./DrawerTest');
+var NewsPage = require('./NewsPage');
+var Dashboard = require('./src/views/Dashboard');
+
 var deviceWidth = Dimensions.get('window').width;
  
 var _navigator;
@@ -35,23 +36,12 @@ BackAndroid.addEventListener('hardwareBackPress',() => {
   }
   return false;
 });
-
+  // return <HomeScreen navigator={navigationOperations} />
 var RouteMapper = function(route, navigationOperations, onComponentRef){
   _navigator = navigationOperations;
   if(route.name === 'home'){
-
-    return <NewsPage navigator={navigationOperations} />
-    // return <HomeScreen navigator={navigationOperations} />
-    //return <WebViewExample navigator={navigationOperations} />
-     // return( 
-     //  <ScrollableTabView>
-     //    <InTheatersPage style={{flex: 1, width: deviceWidth}} navigator={navigationOperations} url={"https://api.douban.com/v2/movie/in_theaters"} tabLabel="正在热映" />
-     //    <Text tabLabel="Flow" > Page 2</Text>
-     //    <Text tabLabel="Jest" > Page 3</Text>
-     //  </ScrollableTabView>
-     //  );
-
-       return <DrawerTest navigator={navigationOperations} />
+      // return <NewsPage navigator={navigationOperations} />
+      return <Dashboard navigator={navigationOperations}/>
   }else if(route.name === 'detail'){
     console.log("news: " + JSON.stringify(route.news));
     return <DetailView navigator={navigationOperations}
@@ -61,7 +51,7 @@ var RouteMapper = function(route, navigationOperations, onComponentRef){
 };
 
 var TestRN = React.createClass({
-  render: function() {
+  render() {
     var initialRoute = {name: 'home'};
     return (
       <Navigator
