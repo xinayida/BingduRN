@@ -35,7 +35,7 @@ var {
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 var CustomTabBar = require('./customTabBar.android.js');
 
-var Icon = require('react-native-vector-icons/Ionicons');//FontAwesome
+var Icon = require('react-native-vector-icons/Foundation');//FontAwesome
 
 //module.exports
  var TabBar = React.createClass({

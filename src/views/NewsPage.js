@@ -6,6 +6,7 @@
 import React from 'react-native';
 import NewsCell from './NewsCell';
 import RefreshableListView from '../components/RefreshableListView';
+import api from '../network/api';
 
 var {
     View,
@@ -18,7 +19,7 @@ var {
 //
 //
 
-var API_URL = 'http://api.bingodu.cn/api/news/listv14';
+//var API_URL = 'http://api.bingodu.cn/api/news/listv14';
 //var API_URL2 = 'http://platform.sina.com.cn/sports_all/client_api?app_key=3571367214&_sport_t_=football&_sport_s_=opta&_sport_a_=teamOrder&type=213&season=2015&format=json';
 //var API_URL3 = 'http://www.vip.com/detail-ajax.php?callback=_getSizeTableData&act=getSizeHtml&merchandiseId=86321838&brandId=642112';
 //var API_URL_4 = 'https://api.douban.com/v2/movie/in_theaters?apikey=00aefce4d06e0bb7020cf6ae714a2325';
@@ -29,7 +30,7 @@ var PARAMS = '?province=%E5%B9%BF%E4%B8%9C%E7%9C%81&lon=113.314586&lat=23.124376
 
 var url;
 
-export default class NewsPage extends React.Component {
+class NewsPage extends React.Component {
 
     // getInitialState(){
     //     return {
@@ -212,7 +213,7 @@ export default class NewsPage extends React.Component {
         var myDate = new Date();
         // var timestamp = myDate.getMilliseconds();
         // console.info("getUrl() offset " + offset + " timestamp: " + timestamp);
-        var url = API_URL + PARAMS;
+        var url = api.BD_NEWS_LIST + PARAMS;
         url = url + "&channel=" + channelid;
         if (offset > 0) {
             url = url + "&direction=former&offset=" + offset + "&timestamp=" + this.state.lastTS;

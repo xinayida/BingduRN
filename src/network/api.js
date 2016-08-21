@@ -5,3 +5,6 @@ exports.HN_SHOW_STORIES_ENDPOINT = HACKER_NEWS_API_V0+'showstories.json';
 exports.HN_ASK_STORIES_ENDPOINT = HACKER_NEWS_API_V0+'askstories.json';
 exports.HN_JOB_STORIES_ENDPOINT = HACKER_NEWS_API_V0+'jobstories.json';
 exports.HN_ITEM_ENDPOINT = HACKER_NEWS_API_V0+'item/';
+
+var DOMAIN = 'http://api.bingodu.cn/api/';
+exports.BD_NEWS_LIST = DOMAIN + 'news/listv14';

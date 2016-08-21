@@ -9,7 +9,7 @@ var {
   Animated,
 } = React;
 
-var Icon = require('react-native-vector-icons/Ionicons');//FontAwesome
+var Icon = require('react-native-vector-icons/Foundation');//FontAwesome
 
 var styles = StyleSheet.create({
   tab: {

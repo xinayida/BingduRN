@@ -20,9 +20,9 @@ var {
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 //var InTheatersPage = require('./InTheatersPage');
 //var DetailScreen = require('./DetailScreen');
-var DetailView = require('./DetailView');
+var DetailView = require('./src/views/DetailView');
 //var HomeScreen = require('./HomeScreen')
-var NewsPage = require('./NewsPage');
+// var NewsPage = require('./NewsPage');
 var Dashboard = require('./src/views/Dashboard');
 
 var deviceWidth = Dimensions.get('window').width;

@@ -6,7 +6,9 @@ var {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Image,
+  ViewPagerAndroid,
 } = React;
 
 var ToolbarAndroid = require('ToolbarAndroid');
@@ -18,27 +20,49 @@ var api = require("../../network/api.js");
 var RefreshableListView = require("../../components/RefreshableListView");
 
 var NewsPage = require('../NewsPage');
+var SubjectTitle = require('../SubjectTitle');//精选页标题栏
+var Swiper = require('../../Swiper');
+
+import ViewPage from '../../components/Swiper';
+import Utils from '../../utils';
+
+var IMGS = [
+  'https://images.unsplash.com/photo-1441742917377-57f78ee0e582?h=1024',
+  'https://images.unsplash.com/photo-1441716844725-09cedc13a4e7?h=1024',
+  'https://images.unsplash.com/photo-1441448770220-76743f9e6af6?h=1024',
+  'https://images.unsplash.com/photo-1441260038675-7329ab4cc264?h=1024',
+  'https://images.unsplash.com/photo-1441126270775-739547c8680c?h=1024',
+  'https://images.unsplash.com/photo-1440964829947-ca3277bd37f8?h=1024',
+  'https://images.unsplash.com/photo-1440847899694-90043f91c7f9?h=1024'
+];
 
 module.exports = React.createClass({
 	getInitialState: function(){
 		return {
 			topStoryIDS: null,
-			lastIndex: 0
+			lastIndex: 0,
+      pages:[],
 		};
 	},
 	render(){
 		return (
 			<TabBar structure={[
+        {
+          title: 'demo',
+          iconName: 'cloud',
+          renderContent: this.renderContent('demo',-1),
+        },
 				{
 					title: "精选",
-					iconName: 'ios-car',
+					iconName: 'list-thumbnails',
 			    renderContent: this.renderContent('精选', 37),
 				},
 				 {
           title: '发现',
-          iconName: 'ios-cloudy',
+          iconName: 'eye',
           renderContent: this.renderContent('发现', 1),
         },
+       
 				]}
         selectedTab={0}
         activeTintColor={'#ff8533'}
@@ -48,25 +72,39 @@ module.exports = React.createClass({
         />
 			);
 	},
+
   renderContent(title, channelid){
+    if(channelid == -1){
+      return () => {
+        // return (
+        //   <Swiper/>
+        //   );
+        return(<ViewPage imgUrls={IMGS} size={{height:Utils.size.height/3, width:Utils.size.width}}/>);
+        // var height = Utils.size.height/3;
+        // var width = Utils.size.width;
+        // return (
+        //   <View style={{flexDirection:'column', backgroundColor: 'white', height: height, width: width}}>
+        //     <ViewPagerAndroid
+        //       style={{flex:1}}
+        //       initialPage={0}
+        //       pageMargin={0}
+        //       ref={viewPager => { this.viewPager = viewPager; }}>
+        //       {this.state.pages}
+        //     </ViewPagerAndroid>
+        //   </View>
+        // );
+      }
+    } else {
      return () => {
-      // return(
-      //   <View style={{flex:1}}>
-      //     <ToolbarAndroid style={styles.toolbar}
-      //                     title={title}
-      //                     titleColor={'#FFFFFF'}/>
-      //     <RefreshableListView renderRow={(row)=>this.renderListViewRow(row, 'Show Story')}
-      //                          onRefresh={(page, callback)=>this.listViewOnRefresh(page, callback, api.HN_SHOW_STORIES_ENDPOINT)}
-      //                          backgroundColor={'#F6F6EF'}/>
-      //   </View>)
       return (
         <View style={{flex:1}}>
           <ToolbarAndroid style={styles.toolbar}
                           title={title}
                           titleColor={'#FFFFFF'}/>
           <NewsPage navigator={this.props.navigator} channelid={channelid}/>
-        </View>)
-      ;}
+        </View>);
+      }
+    }
   },
 	onChangeTab(tab){
 		// console.log("onChangeTab: ", tab.i);

@@ -118,7 +118,7 @@ var styles = StyleSheet.create({
     borderColor: '#dddddd',
     borderStyle: null,
     borderWidth: 0.5,
-    borderRadius: 2,
+    borderRadius: 5,
   },
   cellImage: {
     backgroundColor: '#dddddd',
